@@ -20,7 +20,7 @@
                 },
                 "mountpoint": "/swap",
                 "size": "60000MiB",
-                "start": "513MiB",
+                "start": "512MiB",
                 "type": "primary",
                 "wipe": true
             },
@@ -68,7 +68,7 @@
                 },
                 "mountpoint": null,
                 "size": "100%",
-                "start": "60513MiB",
+                "start": "60000MiB",
                 "type": "primary",
                 "wipe": true
             }
