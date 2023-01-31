@@ -47,12 +47,6 @@
                         },
                         {
                             "compress": false,
-                            "mountpoint": "/etc",
-                            "name": "@etc",
-                            "nodatacow": false
-                        },
-                        {
-                            "compress": false,
                             "mountpoint": "/var/cache/pacman/pkg",
                             "name": "@pkg",
                             "nodatacow": false
