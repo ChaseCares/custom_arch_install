@@ -154,6 +154,6 @@
     "timezone": "America/New_York",
     "version": "2.5.1",
     "custom-commands": [
-        "cp /post_install.sh /mnt/archinstall/home/"
+        "git clone https://github.com/ChaseCares/custom_arch_install.git"
     ]
 }
