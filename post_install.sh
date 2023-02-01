@@ -10,3 +10,5 @@ sed -i "s/timeout 3/timeout 0/" /boot/loader/loader.conf
 sed -i "s/# console-mode keep/console-mode auto/" /boot/loader/loader.conf
 
 rsync -aAX -e 'ssh -p 2121' $USER@10.13.13.11:/mnt/user/Chase/arch/ /home/$USER
+
+echo "Done! remove custom_arch_install"

@@ -1,0 +1,10 @@
+# Update the user installed packages txt file
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Description = Updating the user installed packages file
+When = PostTransaction
+Exec = /home/chase/projects/custom_arch_install/packages/updater.sh

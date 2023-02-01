@@ -10,8 +10,8 @@ function set_up_user() {
         echo "Credentials username: '$username', password '$password'"
         read -r -p "Continue? (Y/n): " response && [[ $response == [yY] ]] || exit 1
 
-        sed -i "s/__username__/$username/g" user_credentials.json
-        sed -i "s/__password__/$password/g" user_credentials.json
+        sed -i "s/__username__/$username/g" ./install_configs/user_credentials.json
+        sed -i "s/__password__/$password/g" ./install_configs/user_credentials.json
 
         USER_CREATED=true
     else
@@ -19,4 +19,4 @@ function set_up_user() {
     fi
 }
 
-archinstall --config ./user_configuration.json --disk-layout ./user_disk_layout.json --creds ./user_credentials.json
+archinstall --config ./install_configs/user_configuration.json --disk-layout ./install_configs/user_disk_layout.json --creds ./install_configs/user_credentials.json

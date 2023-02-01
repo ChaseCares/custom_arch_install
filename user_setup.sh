@@ -46,7 +46,7 @@ function install_packages() {
 }
 
 function install_py_packages() {
-    pip install -r requirements.txt
+    pip install -r ./pip/requirements.txt
 }
 
 function start_services() {
@@ -69,6 +69,12 @@ function set_up_swap() {
     echo "Add the following to /etc/fstab"
     echo "UUID=$(blkid -s UUID -o value "$swap") none swap defaults 0 0"
 }
+
+function install_etc_conf() {
+    cp .config/sddm/kde_settings.conf /etc/sddm.conf.d/
+}
+
+install_etc_conf
 
 install_packages
 
