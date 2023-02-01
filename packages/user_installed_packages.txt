@@ -7,7 +7,6 @@ bottom
 btrfs-progs
 ccache
 chromium
-crosswords
 discord_arch_electron
 docker
 docker-buildx

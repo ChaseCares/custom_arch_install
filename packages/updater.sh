@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SAVE_DIR="/home/chase/projects"
+SAVE_DIR="/home$1"
 TXT_FILE="$SAVE_DIR/custom_arch_install/packages/user_installed_packages.txt"
 
 pacman -Qqe >"$TXT_FILE"
