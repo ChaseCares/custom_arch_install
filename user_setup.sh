@@ -50,7 +50,7 @@ function install_py_packages() {
 }
 
 function start_services() {
-    systemctl start bluetooth
+    systemctl enable bluetooth
 }
 
 function set_up_swap() {

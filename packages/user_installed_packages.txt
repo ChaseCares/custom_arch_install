@@ -3,6 +3,7 @@
 amd-ucode
 authy
 bash-completion
+bat
 bottom
 btrfs-progs
 ccache
@@ -10,6 +11,7 @@ chromium
 discord_arch_electron
 docker
 docker-buildx
+dog
 earlyoom
 exa
 factorio
@@ -23,6 +25,7 @@ joplin-appimage
 kitty
 logrotate
 lutris
+moonlight-qt-bin
 ndisc6
 neofetch
 nodejs
@@ -54,6 +57,8 @@ torbrowser-launcher
 ttf-liberation
 usbutils
 visual-studio-code-bin
+xcp
 xorg-xkill
+xpadneo-dkms
 ydotool
 zoom
