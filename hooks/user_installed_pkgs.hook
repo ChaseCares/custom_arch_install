@@ -5,6 +5,6 @@ Operation = Remove
 Type = Package
 Target = *
 [Action]
-Description = Updating the user installed packages file
+Description = Updating the user installed packages file...
 When = PostTransaction
 Exec = /home/chase/projects/custom_arch_install/packages/updater.sh /chase/projects

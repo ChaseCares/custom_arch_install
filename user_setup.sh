@@ -5,27 +5,26 @@ mkdir -p $TEMP_DIR
 
 function install_paru() {
     if ! command -v paru &>/dev/null; then
-        sudo pacman -S --needed base-devel
+        sudo pacman -S --needed
         git clone https://aur.archlinux.org/paru.git
         cd paru || exit
         makepkg -si
         cd ../
+
+        if [ -f "/etc/makepkg.conf" ]; then
+            sed -i "s/^BUILDENV=.*/BUILDENV=(\!distcc color ccache check \!sign)/g" ./makepkg.conf
+        else
+            echo "Error: $MAKEPKG_CONF file not found."
+        fi
     fi
     echo "Paru installed"
 }
 
-function install_rust() {
+function install_noconfirm() {
     if ! command -v rustc &>/dev/null; then
-        sudo pacman --noconfirm -S rust
+        sudo pacman --noconfirm -S rust firefox
     fi
-    echo "Rust installed"
-}
-
-function install_firefox() {
-    if ! command -v firefox &>/dev/null; then
-        sudo pacman --noconfirm -S firefox
-    fi
-    echo "Firefox installed"
+    echo "noconfirms installed"
 }
 
 function install_packages() {
@@ -33,9 +32,8 @@ function install_packages() {
     sudo pacman -Syu
 
     cd $TEMP_DIR || exit 1
-    install_rust
     install_paru
-    install_firefox
+    install_noconfirm
     cd ../
 
     paru -S --needed - <user_installed_packages.txt
@@ -74,6 +72,13 @@ function install_etc_conf() {
     cp .config/sddm/kde_settings.conf /etc/sddm.conf.d/
 }
 
+# For flashing ESPs
+# https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#linux-dialout-group
+function add_user_to_c() {
+    echo "Adding $USER to uucp group"
+    sudo usermod -a -G uucp $USER
+}
+
 install_etc_conf
 
 install_packages
@@ -83,3 +88,5 @@ install_py_packages
 start_services
 
 set_up_swap
+
+add_user_to_uucp
