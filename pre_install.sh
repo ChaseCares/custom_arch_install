@@ -2,7 +2,7 @@
 
 USER_CREATED=false
 
-function set_up_user() {
+set_up_user() {
     if [[ "$USER_CREATED" == false ]]; then
         read -p "Enter username: " -r username
         read -p "Enter password: " -r password

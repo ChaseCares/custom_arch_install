@@ -3,8 +3,8 @@
 TEMP_DIR=temp
 mkdir -p $TEMP_DIR
 
-function install_paru() {
-    if ! command -v paru &>/dev/null; then
+install_paru() {
+    if ! command -v paru >/dev/null 2>&1; then
         sudo pacman -S --needed
         git clone https://aur.archlinux.org/paru.git
         cd paru || exit
@@ -20,14 +20,14 @@ function install_paru() {
     echo "Paru installed"
 }
 
-function install_noconfirm() {
-    if ! command -v rustc &>/dev/null; then
+install_noconfirm() {
+    if ! command -v rustc >/dev/null 2>&1; then
         sudo pacman --noconfirm -S rust firefox
     fi
     echo "noconfirms installed"
 }
 
-function install_packages() {
+install_packages() {
     # Install updatespac
     sudo pacman -Syu
 
@@ -43,15 +43,15 @@ function install_packages() {
     paru -Qtdq | paru -Rns -
 }
 
-function install_py_packages() {
+install_py_packages() {
     pip install -r ./pip/requirements.txt
 }
 
-function start_services() {
+start_services() {
     systemctl enable bluetooth
 }
 
-function set_up_swap() {
+set_up_swap() {
     swap="$(grep -e '/swap' /etc/mtab | grep -o '/dev/[[:alnum:]]\+')"
     if [[ -z "$swap" ]]; then
         echo "No swap partition found"
@@ -68,15 +68,15 @@ function set_up_swap() {
     echo "UUID=$(blkid -s UUID -o value "$swap") none swap defaults 0 0"
 }
 
-function install_etc_conf() {
+install_etc_conf() {
     cp .config/sddm/kde_settings.conf /etc/sddm.conf.d/
 }
 
 # For flashing ESPs
 # https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#linux-dialout-group
-function add_user_to_c() {
+add_user_to_uucp() {
     echo "Adding $USER to uucp group"
-    sudo usermod -a -G uucp $USER
+    sudo usermod -a -G uucp "$USER"
 }
 
 install_etc_conf
