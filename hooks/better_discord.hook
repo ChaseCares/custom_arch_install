@@ -1,0 +1,10 @@
+# Reinstalling Better Discord after discord-electron-openasar update
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = discord-electron-openasar
+[Action]
+Description = Reinstalling Better Discord after discord-electron-openasar update.
+When = PostTransaction
+Exec = /home/chase/projects/custom_arch_install/scripts/better_discord.sh
