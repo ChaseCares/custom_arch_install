@@ -1,0 +1,10 @@
+# Unset the cargo target directory
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+[Action]
+Description = Unseting the cargo target directory 
+When = PreTransaction
+Exec = set -e CARGO_BUILD_TARGET_DIR 
