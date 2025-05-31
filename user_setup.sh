@@ -5,7 +5,7 @@ mkdir -p $TEMP_DIR
 
 install_paru() {
     if ! command -v paru >/dev/null 2>&1; then
-        sudo pacman -S --needed
+        sudo pacman -S --needed base-devel
         git clone https://aur.archlinux.org/paru.git
         cd paru || exit
         makepkg -si
